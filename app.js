@@ -10,7 +10,7 @@ const addTodo = (inputValue) => {
         <i class="far fa-trash-alt" data-trash="${inputValue}"></i>
       </li>
     `;
-    event.target.reset();
+    // event.target.reset();
   }
 }
 
@@ -20,6 +20,8 @@ formAddTodo.addEventListener("submit", (event) => {
   const inputValue = event.target.add.value.trim();
 
   addTodo(inputValue);
+  
+  event.target.reset();
 
 });
 
@@ -44,12 +46,12 @@ const filterTodos = (todos, inputValue, returnMatchedTodos) => todos
     return returnMatchedTodos ? matchedTodo : !matchedTodo;
   })
 
-  const manipulateClasses = (todos, classToRemove, classToAdd) => {
-    todos.forEach(todo => {
-      todo.classList.remove(classToRemove);
-      todo.classList.add(classToAdd);
-    })
-  }
+const manipulateClasses = (todos, classToRemove, classToAdd) => {
+  todos.forEach(todo => {
+    todo.classList.remove(classToRemove);
+    todo.classList.add(classToAdd);
+  })
+}
 
 const hideTodos = (todos, inputValue) => {
   const todosToHide = filterTodos(todos, inputValue, false);
